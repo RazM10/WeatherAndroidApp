@@ -6,12 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".LocationEnablecheckActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Location is off"
-        android:textSize="25sp"
-        android:textColor="#212121"
-        android:layout_centerInParent="true"/>
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Location is off"
+            android:textSize="25sp"
+            android:textColor="#212121"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location On"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:background="@color/colorAccent"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:onClick="clickRetryToOnLocation"/>
+    </LinearLayout>
 
 </RelativeLayout>
