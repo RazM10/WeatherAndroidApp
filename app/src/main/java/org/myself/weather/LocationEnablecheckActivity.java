@@ -34,7 +34,7 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
         super.onResume();
         getLocationInfo();
         if (gps_enabled && network_enabled){
-            startActivity(new Intent(LocationEnablecheckActivity.this, MainActivity.class));
+            startActivity(new Intent(LocationEnablecheckActivity.this, Main3Activity.class));
             finish();
         }
     }
