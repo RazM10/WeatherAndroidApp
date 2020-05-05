@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +44,12 @@ public class Main3Activity extends AppCompatActivity implements
         setContentView(R.layout.activity_main3);
 
         textViewLocation=findViewById(R.id.main3_location_tv);
+        textViewLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Main3Activity.this,WeatherActivity.class));
+            }
+        });
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 // The next two lines tell the new client that “this” current class will handle connection stuff
@@ -75,7 +83,6 @@ public class Main3Activity extends AppCompatActivity implements
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
             mGoogleApiClient.disconnect();
         }
-
 
     }
 
@@ -149,8 +156,8 @@ public class Main3Activity extends AppCompatActivity implements
     }
 
     private void displayLocation(){
-        LocationEnablecheckActivity.currentLatitude=currentLatitude;
-        LocationEnablecheckActivity.currentLongitude=currentLongitude;
+        LocationEnablecheckActivity.currentLatitude= String.valueOf(currentLatitude);
+        LocationEnablecheckActivity.currentLongitude= String.valueOf(currentLongitude);
 
         Geocoder geocoder;
         List<Address> addresses;

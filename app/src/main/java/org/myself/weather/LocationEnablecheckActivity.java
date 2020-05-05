@@ -12,6 +12,8 @@ import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.androidnetworking.AndroidNetworking;
+
 
 public class LocationEnablecheckActivity extends AppCompatActivity {
 
@@ -21,8 +23,8 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
     LocationManager lm;
 
     //lat-long
-    public static double currentLatitude;
-    public static double currentLongitude;
+    public static String currentLatitude;
+    public static String currentLongitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location_enablecheck);
 
         context = LocationEnablecheckActivity.this;
+
+        AndroidNetworking.initialize(getApplicationContext());
 
         onLocation();
     }
