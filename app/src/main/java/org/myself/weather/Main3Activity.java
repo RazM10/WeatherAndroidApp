@@ -149,6 +149,9 @@ public class Main3Activity extends AppCompatActivity implements
     }
 
     private void displayLocation(){
+        LocationEnablecheckActivity.currentLatitude=currentLatitude;
+        LocationEnablecheckActivity.currentLongitude=currentLongitude;
+
         Geocoder geocoder;
         List<Address> addresses;
         geocoder = new Geocoder(this, Locale.getDefault());

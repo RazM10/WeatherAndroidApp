@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
             public void onLocationChanged(Location location2) {
                 Log.d("WeatherApp", "onLocationChanged(): callback received");
 
+                LocationEnablecheckActivity.currentLatitude=location2.getLatitude();
+                LocationEnablecheckActivity.currentLongitude=location2.getLongitude();
+
                 String longitude = String.valueOf(location2.getLongitude());
                 String latitude = String.valueOf(location2.getLatitude());
 

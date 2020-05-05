@@ -20,6 +20,10 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
     boolean gps_enabled, network_enabled;
     LocationManager lm;
 
+    //lat-long
+    public static double currentLatitude;
+    public static double currentLongitude;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
