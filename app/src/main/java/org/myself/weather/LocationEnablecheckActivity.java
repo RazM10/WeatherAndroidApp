@@ -25,6 +25,7 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
     //lat-long
     public static String currentLatitude;
     public static String currentLongitude;
+    public static String cityName="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

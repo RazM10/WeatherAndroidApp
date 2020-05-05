@@ -48,6 +48,7 @@ public class Main3Activity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Main3Activity.this,WeatherActivity.class));
+                finish();
             }
         });
 
