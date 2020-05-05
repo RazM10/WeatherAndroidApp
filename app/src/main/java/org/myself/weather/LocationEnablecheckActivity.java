@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -34,7 +35,10 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
         super.onResume();
         getLocationInfo();
         if (gps_enabled && network_enabled){
-            startActivity(new Intent(LocationEnablecheckActivity.this, Main3Activity.class));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                startActivity(new Intent(LocationEnablecheckActivity.this, MainActivity.class));
+            else
+                startActivity(new Intent(LocationEnablecheckActivity.this, Main3Activity.class));
             finish();
         }
     }
