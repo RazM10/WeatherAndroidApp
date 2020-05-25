@@ -94,16 +94,27 @@ public class WeatherActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         Log.d("WeatherData", "onResponse: " + response);
                         double temp = 0;
-                        long miliSce = 0, milisec2 = 0;
+                        long miliSecSunRise = 0, miliSecSunSet = 0;
                         try {
                             temp = response.getJSONObject("main").getDouble("temp") - 273.15;
-                            miliSce = response.getJSONObject("sys").getLong("sunrise");
-                            milisec2 = response.getJSONObject("sys").getLong("sunset");
+                            miliSecSunRise = response.getJSONObject("sys").getLong("sunrise");
+                            miliSecSunSet = response.getJSONObject("sys").getLong("sunset");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
+//                        another time converter
+                        long dv = Long.valueOf(miliSecSunRise)*1000;// its need to be in milisecond
+                        Date df = new Date(dv);
+                        String sunRise = new SimpleDateFormat("MMM dd, yyyy hh:mma").format(df);
+                        //sunset
+                        long dv2 = Long.valueOf(miliSecSunSet)*1000;// its need to be in milisecond
+                        Date df2 = new Date(dv2);
+                        String sunSet = new SimpleDateFormat("MMM dd, yyyy hh:mma").format(df2);
+
                         int roundValue = (int) Math.rint(temp);
-                        textViewWeatherData.setText(response.toString() + "\n\n\n\n\n Temp For City: " + roundValue + " Sunrise: " + miliSce);
+                        textViewWeatherData.setText(response.toString() + "\n\n\n\n\n Temp For City: " + roundValue +" Sunrise: " +
+                                sunRise +" Sunset:" + sunSet+"\n\n\n");
                     }
 
                     @Override
