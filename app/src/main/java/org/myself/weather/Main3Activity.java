@@ -12,6 +12,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class Main3Activity extends AppCompatActivity implements
         LocationListener {
 
     TextView textViewLocation;
+    ProgressBar pbar;
+
     //Define a request code to send to Google Play services
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private GoogleApiClient mGoogleApiClient;
@@ -44,6 +47,8 @@ public class Main3Activity extends AppCompatActivity implements
         setContentView(R.layout.activity_main3);
 
         textViewLocation=findViewById(R.id.main3_location_tv);
+        pbar=findViewById(R.id.main3_pbar);
+
         textViewLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,6 +173,8 @@ public class Main3Activity extends AppCompatActivity implements
             addresses = geocoder.getFromLocation(currentLatitude,currentLongitude, 1);
             textViewLocation.setText("Lat: "+currentLatitude + " Long: " + currentLongitude+"\n"
                     +"Address: "+addresses.get(0));
+            startActivity(new Intent(Main3Activity.this,WeatherActivity.class));
+            finish();
         } catch (IOException e) {
             e.printStackTrace();
         }
