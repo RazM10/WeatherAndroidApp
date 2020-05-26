@@ -20,7 +20,7 @@ public class CityOrActivity extends AppCompatActivity {
 
     public void goWithCity(View view) {
         LocationEnablecheckActivity.cityName=editTextCItyName.getText().toString();
-        WeatherActivity.isCity=true;
+        WeatherOrActivity.isCity=true;
         finish();
     }
 }
