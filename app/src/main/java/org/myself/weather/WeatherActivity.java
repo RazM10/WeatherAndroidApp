@@ -126,7 +126,7 @@ public class WeatherActivity extends AppCompatActivity {
 
 
     public void goForCity(View view) {
-        startActivity(new Intent(WeatherActivity.this, CityActivity.class));
+        startActivity(new Intent(WeatherActivity.this, CityOrActivity.class));
     }
 
     @Override
