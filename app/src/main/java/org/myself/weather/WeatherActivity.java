@@ -69,6 +69,9 @@ public class WeatherActivity extends AppCompatActivity {
                         long dv = Long.valueOf(miliSecSunRise)*1000;// its need to be in milisecond
                         Date df = new Date(dv);
                         String sunRise = new SimpleDateFormat("MMM dd, yyyy hh:mma").format(df);
+                        String[] rise1=sunRise.split(",");
+                        String[] rise2=rise1[1].split(" ");
+                        String[] time=rise1[0].split(" ");
                         //sunset
                         long dv2 = Long.valueOf(miliSecSunSet)*1000;// its need to be in milisecond
                         Date df2 = new Date(dv2);
@@ -76,7 +79,7 @@ public class WeatherActivity extends AppCompatActivity {
 
                         int roundValue = (int) Math.rint(temp);
                         textViewWeatherData.setText(response.toString() + "\n\n\n\n\n Temp For Co.: " + roundValue + " Sunrise: " +
-                                sunRise +" Sunset:" + sunSet+"\n\n\n");
+                                sunRise +" Sunset:" + sunSet+" Rise: "+rise2[2]+" Time: "+time[0]+"-"+time[1]+"\n\n\n");
                     }
 
                     @Override

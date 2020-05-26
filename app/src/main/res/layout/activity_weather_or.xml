@@ -97,7 +97,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" AM - Sunset "
+                            android:text=" Sunset "
                             android:textColor="@color/houseWhite"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -114,7 +114,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" PM"
+                            android:text=""
                             android:textColor="@color/houseWhite"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -166,6 +166,7 @@
                     android:src="@drawable/light_rain" />
 
                 <TextView
+                    android:id="@+id/weather_or_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rainy"

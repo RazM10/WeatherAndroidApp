@@ -21,7 +21,7 @@ import java.util.Date;
 public class WeatherOrActivity extends AppCompatActivity {
 
     TextView textViewTemp, textViewWeek, textViewDate, textViewTempFeelLike, textViewSunRiseTime, textViewSunSetTime,
-            textViewCityName, textViewCountryName;
+            textViewCityName, textViewCountryName, textViewDescription;
     ImageView imageViewSituation;
 
     public static boolean isCity = false;
@@ -40,6 +40,7 @@ public class WeatherOrActivity extends AppCompatActivity {
         textViewSunSetTime=findViewById(R.id.weather_or_sunset_time_tv);
         textViewCityName=findViewById(R.id.weather_or_city_tv);
         textViewCountryName=findViewById(R.id.weather_or_country_tv);
+        textViewDescription=findViewById(R.id.weather_or_description);
 
         textViewWeek=findViewById(R.id.weather_or_week_tv);
         textViewDate=findViewById(R.id.weather_or_date_tv);
@@ -58,7 +59,7 @@ public class WeatherOrActivity extends AppCompatActivity {
                         int id;
                         double temp = 0, tempF=0;
                         long miliSecSunRise = 0, miliSecSunSet = 0;
-                        String country, city, description, iconName;
+                        String country="", city="", description="", iconName;
                         try {
                             id = response.getJSONArray("weather").getJSONObject(0).getInt("id");
                             iconName=updateIconName(id);
@@ -78,11 +79,26 @@ public class WeatherOrActivity extends AppCompatActivity {
                         }
 
                         String sunRise = convertSunRiseSetTime(miliSecSunRise);
+                        String[] rise1=sunRise.split(",");
+                        String[] rise2=rise1[1].split(" ");
+                        String[] time=rise1[0].split(" ");
+
                         String sunSet = convertSunRiseSetTime(miliSecSunSet);
+                        String[] set1=sunSet.split(",");
+                        String[] set2=set1[1].split(" ");
 
                         int tempT = (int) Math.rint(temp);
+                        int tempFInt = (int) Math.rint(tempF);
 
                         textViewTemp.setText(tempT+"°");
+                        textViewTempFeelLike.setText("Feels like "+tempFInt+"°");
+                        textViewSunRiseTime.setText(rise2[2]);
+                        textViewSunSetTime.setText(set2[2]);
+                        textViewWeek.setText(time[0]);
+                        textViewDate.setText(time[1]);
+                        textViewDescription.setText(description.toUpperCase());
+                        textViewCityName.setText(city);
+                        textViewCountryName.setText(country);
                     }
 
                     @Override
