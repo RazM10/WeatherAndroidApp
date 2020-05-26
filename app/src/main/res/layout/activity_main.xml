@@ -6,12 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/main_location_tv"
+    <ProgressBar
+        android:id="@+id/main_pbar"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Latitude &amp; Longitude"
-        android:layout_centerInParent="true"/>
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

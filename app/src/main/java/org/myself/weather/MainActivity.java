@@ -15,11 +15,12 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textViewLocation;
+    ProgressBar pbar;
 
     //Location Parameters
     String LOCATION_PROVIDERS = LocationManager.NETWORK_PROVIDER;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textViewLocation=findViewById(R.id.main_location_tv);
+        pbar=findViewById(R.id.main_pbar);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getCurrentLocation();
@@ -58,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("WeatherApp", "longitude: " + longitude);
                 Log.d("WeatherApp", "latitude: " + latitude);
 
-                textViewLocation.setText("Lat: "+latitude+ " long: "+longitude);
                 startActivity(new Intent(MainActivity.this,WeatherOrActivity.class));
                 finish();
                 //extra start here

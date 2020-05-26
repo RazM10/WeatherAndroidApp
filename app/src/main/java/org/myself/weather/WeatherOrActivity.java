@@ -228,7 +228,7 @@ public class WeatherOrActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (WeatherActivity.isCity) {
+        if (WeatherOrActivity.isCity) {
             getDataForCity();
         } else
             getData();
