@@ -7,4 +7,5 @@
     <!--    Weather-->
     <color name="weatherRed">#E91B34</color>
     <color name="weatherBlue">#00193C</color>
+    <color name="houseWhite">#FFFFFF</color>
 </resources>

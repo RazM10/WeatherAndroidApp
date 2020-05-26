@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CityActivity"></activity>
+        <activity android:name=".WeatherOrActivity"></activity>
+        <activity android:name=".CityActivity" />
         <activity android:name=".WeatherActivity" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".MainActivity" />
