@@ -33,6 +33,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/weather_or_full_layout"
         android:layout_below="@+id/weather_city_btn_rLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

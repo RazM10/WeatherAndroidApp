@@ -2,10 +2,12 @@ package org.myself.weather;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -23,6 +25,7 @@ public class WeatherOrActivity extends AppCompatActivity {
     TextView textViewTemp, textViewWeek, textViewDate, textViewTempFeelLike, textViewSunRiseTime, textViewSunSetTime,
             textViewCityName, textViewCountryName, textViewDescription;
     ImageView imageViewSituation;
+    RelativeLayout relativeLayout;
 
     public static boolean isCity = false;
 
@@ -46,6 +49,15 @@ public class WeatherOrActivity extends AppCompatActivity {
         textViewDate=findViewById(R.id.weather_or_date_tv);
 
         imageViewSituation=findViewById(R.id.weather_or_situation_imgv);
+
+        relativeLayout=findViewById(R.id.weather_or_full_layout);
+        relativeLayout.setVisibility(View.GONE);
+
+        if (isCity)
+            getDataForCity();
+        else {
+            getData();
+        }
     }
 
     private void getData() {
@@ -56,6 +68,9 @@ public class WeatherOrActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("WeatherData", "onResponse: " + response);
+
+                        relativeLayout.setVisibility(View.VISIBLE);
+
                         int id;
                         double temp = 0, tempF=0;
                         long miliSecSunRise = 0, miliSecSunSet = 0;
@@ -109,20 +124,27 @@ public class WeatherOrActivity extends AppCompatActivity {
     }
 
     private void getDataForCity() {
-        AndroidNetworking.get(WEATHER_URL + "?lat=" + LocationEnablecheckActivity.currentLatitude +
-                "&lon=" + LocationEnablecheckActivity.currentLongitude + "&appid=" + APP_ID)
+        AndroidNetworking.get(WEATHER_URL + "?q=" + LocationEnablecheckActivity.cityName + "&appid=" + APP_ID)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("WeatherData", "onResponse: " + response);
+
+                        relativeLayout.setVisibility(View.VISIBLE);
+
                         int id;
                         double temp = 0, tempF=0;
                         long miliSecSunRise = 0, miliSecSunSet = 0;
-                        String country, city, description;
+                        String country="", city="", description="", iconName;
                         try {
-                            id = response.getJSONObject("weather").getInt("id");
-                            description = response.getJSONObject("weather").getString("description");
+                            id = response.getJSONArray("weather").getJSONObject(0).getInt("id");
+                            iconName=updateIconName(id);
+                            int resourceID=getResources().getIdentifier(iconName,"drawable",getPackageName());
+                            imageViewSituation.setImageResource(resourceID);
+
+
+                            description = response.getJSONArray("weather").getJSONObject(0).getString("description");
                             temp = response.getJSONObject("main").getDouble("temp") - 273.15;
                             tempF = response.getJSONObject("main").getDouble("feels_like") - 273.15;
                             country = response.getJSONObject("sys").getString("country");
@@ -134,11 +156,26 @@ public class WeatherOrActivity extends AppCompatActivity {
                         }
 
                         String sunRise = convertSunRiseSetTime(miliSecSunRise);
+                        String[] rise1=sunRise.split(",");
+                        String[] rise2=rise1[1].split(" ");
+                        String[] time=rise1[0].split(" ");
+
                         String sunSet = convertSunRiseSetTime(miliSecSunSet);
+                        String[] set1=sunSet.split(",");
+                        String[] set2=set1[1].split(" ");
 
                         int tempT = (int) Math.rint(temp);
+                        int tempFInt = (int) Math.rint(tempF);
 
                         textViewTemp.setText(tempT+"°");
+                        textViewTempFeelLike.setText("Feels like "+tempFInt+"°");
+                        textViewSunRiseTime.setText(rise2[2]);
+                        textViewSunSetTime.setText(set2[2]);
+                        textViewWeek.setText(time[0]);
+                        textViewDate.setText(time[1]);
+                        textViewDescription.setText(description.toUpperCase());
+                        textViewCityName.setText(city);
+                        textViewCountryName.setText(country);
                     }
 
                     @Override
@@ -185,5 +222,15 @@ public class WeatherOrActivity extends AppCompatActivity {
     }
 
     public void goForCity(View view) {
+        startActivity(new Intent(WeatherOrActivity.this, CityOrActivity.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (WeatherActivity.isCity) {
+            getDataForCity();
+        } else
+            getData();
     }
 }

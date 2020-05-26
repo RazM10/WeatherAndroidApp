@@ -173,7 +173,7 @@ public class Main3Activity extends AppCompatActivity implements
             addresses = geocoder.getFromLocation(currentLatitude,currentLongitude, 1);
             textViewLocation.setText("Lat: "+currentLatitude + " Long: " + currentLongitude+"\n"
                     +"Address: "+addresses.get(0));
-            startActivity(new Intent(Main3Activity.this,WeatherActivity.class));
+            startActivity(new Intent(Main3Activity.this,WeatherOrActivity.class));
             finish();
         } catch (IOException e) {
             e.printStackTrace();
