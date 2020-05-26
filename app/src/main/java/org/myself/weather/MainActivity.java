@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("WeatherApp", "latitude: " + latitude);
 
                 textViewLocation.setText("Lat: "+latitude+ " long: "+longitude);
-                startActivity(new Intent(MainActivity.this,WeatherActivity.class));
+                startActivity(new Intent(MainActivity.this,WeatherOrActivity.class));
                 finish();
                 //extra start here
 //                double longi = location2.getLongitude();
