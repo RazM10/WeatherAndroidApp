@@ -55,6 +55,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/weather_or_temp_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="32°"
@@ -63,6 +64,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/weather_or_temp_feel_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Feels like 33°"
@@ -84,6 +86,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/weather_or_sunrise_time_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="6:00"
@@ -100,6 +103,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/weather_or_sunset_time_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="7:22"
@@ -127,6 +131,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/weather_or_week_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="THU"
@@ -135,6 +140,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/weather_or_date_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="21"
@@ -154,6 +160,7 @@
                 android:gravity="center">
 
                 <ImageView
+                    android:id="@+id/weather_or_situation_imgv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/light_rain" />
@@ -174,6 +181,7 @@
                 android:orientation="horizontal"
                 android:layout_alignParentBottom="true">
                 <TextView
+                    android:id="@+id/weather_or_city_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Raojan"
@@ -188,6 +196,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/weatherRed"/>
                 <TextView
+                    android:id="@+id/weather_or_country_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="BD"
