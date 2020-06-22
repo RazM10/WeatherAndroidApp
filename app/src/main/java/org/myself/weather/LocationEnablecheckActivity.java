@@ -41,14 +41,19 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
 
         AndroidNetworking.initialize(getApplicationContext());
 
-        noInternetDialog = new NoInternetDialog.Builder(context).build();
+        getInternetOn();
 
         onLocation();
+    }
+
+    public void getInternetOn(){
+        noInternetDialog = new NoInternetDialog.Builder(context).build();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        getInternetOn();
         getLocationInfo();
         if (gps_enabled && network_enabled){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
