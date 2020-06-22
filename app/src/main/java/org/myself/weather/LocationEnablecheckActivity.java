@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidnetworking.AndroidNetworking;
 
+import am.appwise.components.ni.NoInternetDialog;
+
 
 public class LocationEnablecheckActivity extends AppCompatActivity {
 
@@ -21,6 +23,9 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
     Boolean isLocationTurnOn = false;
     boolean gps_enabled, network_enabled;
     LocationManager lm;
+
+    //Internet
+    NoInternetDialog noInternetDialog;
 
     //lat-long
     public static String currentLatitude;
@@ -35,6 +40,8 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
         context = LocationEnablecheckActivity.this;
 
         AndroidNetworking.initialize(getApplicationContext());
+
+        noInternetDialog = new NoInternetDialog.Builder(context).build();
 
         onLocation();
     }
@@ -96,5 +103,11 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
             network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         } catch (Exception ex) {
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        noInternetDialog.onDestroy();
     }
 }
