@@ -61,8 +61,9 @@
                         android:layout_height="wrap_content"
                         android:text="32°"
                         android:textColor="@color/weatherRed"
-                        android:textSize="80sp"
+                        android:textSize="70sp"
                         android:textStyle="bold" />
+                    <!--                        android:textSize="80sp"-->
 
                     <TextView
                         android:id="@+id/weather_or_temp_feel_tv"
@@ -172,8 +173,9 @@
                     android:layout_height="wrap_content"
                     android:text="Rainy"
                     android:textColor="@color/weatherRed"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
+                <!--                    android:textSize="30sp"-->
 
             </LinearLayout>
 
@@ -187,9 +189,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Raojan"
-                    android:textSize="40sp"
+                    android:textSize="30sp"
                     android:textStyle="bold"
                     android:textColor="@color/weatherRed"/>
+                <!--                    android:textSize="40sp"-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -202,8 +205,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="BD"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:textColor="@color/houseWhite"/>
+                <!--                    android:textSize="30sp"-->
             </LinearLayout>
 
         </RelativeLayout>
