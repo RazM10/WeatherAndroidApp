@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -25,7 +26,7 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
     LocationManager lm;
 
     //Internet
-    NoInternetDialog noInternetDialog;
+    public static NoInternetDialog noInternetDialog;
 
     //lat-long
     public static String currentLatitude;
@@ -47,7 +48,7 @@ public class LocationEnablecheckActivity extends AppCompatActivity {
     }
 
     public void getInternetOn(){
-        noInternetDialog = new NoInternetDialog.Builder(context).build();
+        noInternetDialog = new NoInternetDialog.Builder(this).build();
     }
 
     @Override
